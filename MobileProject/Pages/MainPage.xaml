@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileProject.MainPage"
+             Title="HomePage">
+
+    <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Center">
+
+
+        <Entry x:Name="id" Placeholder="Enter ID" Keyboard="Numeric" TextChanged="Numeric"/>
+        <Entry x:Name="name" Placeholder="Enter FirstName" Keyboard="Chat" TextChanged="non_numeric"/>
+        <Entry x:Name="surname" Placeholder="Enter LastName" Keyboard="Chat" TextChanged="non_numeric"/>
+
+        <Label Text="Choose your Gender" FontAttributes="Bold"/>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <RadioButton x:Name="male" Content="Male" GroupName="Gender"/>
+            <RadioButton x:Name="female" Content="Female" GroupName="Gender"/>
+        </HorizontalStackLayout>
+
+        <Label Text="Date of Birth" FontAttributes="Bold"/>
+        <DatePicker x:Name="Date" WidthRequest="150"/>
+
+        <Entry x:Name="phone" Placeholder="Enter Phone Number" Keyboard="Telephone" TextChanged="Numeric"/>
+        <Entry x:Name="mail" Placeholder="Enter Email" Keyboard="Email"/>
+        <Entry x:Name="address" Placeholder="Enter Home Location" Keyboard="Url"/>
+
+
+        <Button x:Name="save" Text="Signup"  Clicked="save_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>
