@@ -11,6 +11,7 @@
         <Entry x:Name="name" Placeholder="Enter FirstName" Keyboard="Chat" TextChanged="non_numeric"/>
         <Entry x:Name="surname" Placeholder="Enter LastName" Keyboard="Chat" TextChanged="non_numeric"/>
 
+
         <Label Text="Choose your Gender" FontAttributes="Bold"/>
         <HorizontalStackLayout HorizontalOptions="Center">
             <RadioButton x:Name="male" Content="Male" GroupName="Gender"/>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MobileProject.DataTransactions;
 
 namespace MobileProject
 {
@@ -15,9 +16,10 @@ namespace MobileProject
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            string _dbPath = Path.Combine(FileSystem.AppDataDirectory, "Student.db");
+
+            builder.Services.AddSingleton(s =>
+            ActivatorUtilities.CreateInstance<DBTrans>(s, _dbPath));
 
             return builder.Build();
         }

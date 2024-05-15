@@ -14,28 +14,31 @@ namespace MobileProject.DataTransactions
         private SQLiteConnection conn;
 
         public DBTrans(string _dbPath)
-        { this.dbPath = _dbPath; }
+        {
+            this.dbPath = _dbPath;
+        }
 
         public void Init()
         {
             conn = new SQLiteConnection(this.dbPath);
             conn.CreateTable<StudentClass>();
         }
-    }
-    public List<StudentClass> GetAllStudents()
+        public List<StudentClass> GetAllStudents()
     {
-        Init();
-        return conn.Table<StudentClass>().ToList();
+            Init();
+            return conn.Table<StudentClass>().ToList();
     }
+
     public void Add(StudentClass student)
     {
-        conn = new SQLiteConnection(this.dbPath);
-        conn.Insert(student);
+            conn = new SQLiteConnection(this.dbPath);
+            conn.Insert(student);
     }
 
     public void Delete(int student_ID)
     {
-        conn = new SQLiteConnection(this.dbPath);
-        conn.Delete(new StudentClass { Id = student_ID });
+            conn = new SQLiteConnection(this.dbPath);
+            conn.Delete(new StudentClass { Id = student_ID });
     }
+  }
 }
