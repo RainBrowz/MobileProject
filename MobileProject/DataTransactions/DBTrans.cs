@@ -28,13 +28,11 @@ namespace MobileProject.DataTransactions
             Init();
             return conn.Table<StudentClass>().ToList();
     }
-
     public void Add(StudentClass student)
     {
             conn = new SQLiteConnection(this.dbPath);
             conn.Insert(student);
     }
-
     public void Delete(int student_ID)
     {
             conn = new SQLiteConnection(this.dbPath);

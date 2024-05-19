@@ -5,26 +5,6 @@
              Title="Enrollments">
 
     <VerticalStackLayout>
-    <Entry x:Name="Stu_Name"/>
-    <Entry x:Name="Stu_Dept"/>
-    <Button x:Name="Button_Add" Text="Add" Clicked="Button_Add_Clicked"/>
-    <ScrollView>
-        <ListView x:Name="Stu_List_View">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding ID}"/>
-                        <Label Text="{Binding Name}"/>
-                        <Label Text="{Binding Department}"/>
-                        <Button Text="Delete" BindingContext="{Binding ID}"
-                             Clicked="Del_Button_Clicked"/>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    </ScrollView>
-    <Button x:Name="Button_Show" Text="Show" Clicked="Button_Show_Clicked"/>
+    
 </VerticalStackLayout>
 </ContentPage>

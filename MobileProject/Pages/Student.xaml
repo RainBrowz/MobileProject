@@ -4,7 +4,54 @@
              x:Class="MobileProject.Student"
              Title="Student">
 
-    <VerticalStackLayout>
-        <Label Text="Hero"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Student Details" FontAttributes="Bold" FontSize="Medium" />
+
+            <Frame Padding="8" CornerRadius="5" >
+                <Entry x:Name="Stu_Name" Placeholder="Enter Name" Keyboard="Text" TextChanged="non_numeric" />
+            </Frame>
+
+            <Label Text="Personal Information" FontAttributes="Bold" FontSize="Medium"/>
+
+            <Label Text="Gender"/>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <RadioButton x:Name="male" Content="Male" GroupName="Gender" VerticalOptions="Center"/>
+                <RadioButton x:Name="female" Content="Female" GroupName="Gender" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Date of Birth"/>
+            <DatePicker x:Name="Date" WidthRequest="150" HorizontalOptions="Center"/>
+
+            <Frame Padding="8" CornerRadius="5" >
+                <Entry x:Name="phone" Placeholder="Phone Number" Keyboard="Telephone" TextChanged="Numeric" />
+            </Frame>
+            <Frame Padding="8" CornerRadius="5" >
+                <Entry x:Name="mail" Placeholder="Email" Keyboard="Email"/>
+            </Frame>
+            <Frame Padding="8" CornerRadius="5" >
+                <Entry x:Name="address" Placeholder="Home Address" Keyboard="Text"/>
+            </Frame>
+
+            <Grid ColumnDefinitions="*, *">
+                <Button x:Name="Button_Add" Text="Add" Clicked="Button_Add_Clicked" Grid.Column="0" />
+                <Button x:Name="Button_Show" Text="Show" Clicked="Button_Show_Clicked" Grid.Column="1" />
+            </Grid>
+            <Button Text="Delete" CommandParameter="{Binding Id}" Clicked="Del_Button_Clicked"
+            BackgroundColor="Red" TextColor="White" HorizontalOptions="Center"/>
+            <ListView x:Name="Stu_List_View" ItemTapped="Stu_List_View_ItemTapped" HeightRequest="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Id}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
