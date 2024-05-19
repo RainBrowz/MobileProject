@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MobileProject.DataTransactions;
 
+
 namespace MobileProject
 {
     public static class MauiProgram
@@ -16,7 +17,7 @@ namespace MobileProject
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            string _dbPath = Path.Combine(FileSystem.AppDataDirectory, "Student.db");
+            string _dbPath = Path.Combine(FileSystem.AppDataDirectory, "Student.db", "Course.db");
 
             builder.Services.AddSingleton(s =>
             ActivatorUtilities.CreateInstance<DBTrans>(s, _dbPath));

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace MobileProject.Models
 {
-    public class StudentClass
+    public class CoursesClass
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int CouId { get; set; }
+        public string CourseName { get; set; }
     }
 }

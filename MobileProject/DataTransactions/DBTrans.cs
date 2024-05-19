@@ -3,8 +3,6 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MobileProject.DataTransactions
 {
@@ -12,31 +10,45 @@ namespace MobileProject.DataTransactions
     {
         public string dbPath;
         private SQLiteConnection conn;
-
         public DBTrans(string _dbPath)
         {
             this.dbPath = _dbPath;
         }
-
-        public void Init()
+        private void Init()
         {
-            conn = new SQLiteConnection(this.dbPath);
-            conn.CreateTable<StudentClass>();
+                    conn = new SQLiteConnection(this.dbPath);
+                    conn.CreateTable<StudentClass>();
+                    conn.CreateTable<CoursesClass>();
         }
         public List<StudentClass> GetAllStudents()
-    {
-            Init();
-            return conn.Table<StudentClass>().ToList();
-    }
-    public void Add(StudentClass student)
-    {
+        {
+                Init();
+                return conn.Table<StudentClass>().ToList();
+        }
+        public void AddStudent(StudentClass student)
+        {
             conn = new SQLiteConnection(this.dbPath);
             conn.Insert(student);
-    }
-    public void Delete(int student_ID)
-    {
+        }
+        public void DeleteStudent(int student_ID)
+        {
             conn = new SQLiteConnection(this.dbPath);
             conn.Delete(new StudentClass { Id = student_ID });
+        }
+        public List<CoursesClass> GetAllCourses()
+        {
+                Init();
+                return conn.Table<CoursesClass>().ToList();
+        }
+        public void AddCourse(CoursesClass course)
+        {
+                conn = new SQLiteConnection(this.dbPath);
+                conn.Insert(course);
+        }
+        public void DeleteCourse(int course_ID)
+        {
+            conn = new SQLiteConnection(this.dbPath);
+            conn.Delete(new CoursesClass { CouId = course_ID });
+        }
     }
-  }
 }

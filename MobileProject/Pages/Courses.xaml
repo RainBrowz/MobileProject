@@ -5,7 +5,33 @@
              Title="Courses">
 
 
-    <VerticalStackLayout>
-        <Label Text="Hero"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Course Details" FontAttributes="Bold" FontSize="Medium" />
+
+            <Frame Padding="8" CornerRadius="5" >
+                <Entry x:Name="Cou_Name" Placeholder="Enter Course Name" Keyboard="Text"  />
+            </Frame>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                <Button x:Name="AddButton" Text="Add" Clicked="AddButton_Clicked" BackgroundColor="#4CAF50" TextColor="White" />
+                <Button x:Name="ShowButton" Text="Show" Clicked="ShowButton_Clicked" BackgroundColor="#FFC107" TextColor="White" />
+            </StackLayout>
+            <Button Text="Delete" CommandParameter="{Binding CourseId}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" HorizontalOptions="Center"/>
+
+            <ListView x:Name="Cou_List_View" ItemTapped="Cou_List_View_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding CourseId}" VerticalOptions="Center"/>
+                                <Label Text="{Binding CourseName}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
