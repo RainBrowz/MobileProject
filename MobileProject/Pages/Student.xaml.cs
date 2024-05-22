@@ -67,7 +67,7 @@ public partial class Student : ContentPage
         }
     }
 
-    private StudentClass selectedStudent;
+    public static StudentClass selectedStudent;
     private void Stu_List_View_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         selectedStudent = e.Item as StudentClass;
@@ -95,7 +95,7 @@ public partial class Student : ContentPage
             return;
 
         // Remove numeric characters
-        string newText = new string(e.NewTextValue.Where(char.IsLetter).ToArray());
+        string newText = new string(e.NewTextValue.Where(c => char.IsLetter(c) || char.IsWhiteSpace(c)).ToArray());
 
         if (newText != e.NewTextValue)
         {

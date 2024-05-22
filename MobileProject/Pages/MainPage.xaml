@@ -7,7 +7,7 @@
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="BackgroundColor" Value="#6200EE" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="CornerRadius" Value="10" />
             <Setter Property="Padding" Value="10" />
         </Style>
         <Style x:Key="LabelStyle" TargetType="Label">
@@ -45,31 +45,35 @@
             <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}"/>
         </StackLayout>
         <Button Text="Delete" CommandParameter="{Binding majId}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
-        <StackLayout>
+
+            <StackLayout>
                 <Frame Style="{StaticResource FrameStyle}">
-                    <Label Text="Major Selected" Style="{StaticResource LabelStyle}" HorizontalOptions="Center"/>
+                    <StackLayout>
+                        <Label Text="Major Selected" Style="{StaticResource LabelStyle}" HorizontalOptions="Center"/>
+
+                        <ScrollView>
+                            <ListView x:Name="major_List_View" ItemTapped="major_List_View_ItemTapped">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding majId}" Style="{StaticResource LabelStyle}"/>
+                                                <Label Text="{Binding majName}" Style="{StaticResource LabelStyle}"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollView>
+                    </StackLayout>
                 </Frame>
             </StackLayout>
 
-        <ScrollView>
-            <ListView x:Name="major_List_View" ItemTapped="major_List_View_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding majId}" Style="{StaticResource LabelStyle}"/>
-                                <Label Text="{Binding majName}" Style="{StaticResource LabelStyle}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-            <Button Text="Previous" Style="{StaticResource ButtonStyle}" IsEnabled="False"/>
-            <Button Text="Continue" Clicked="Continue_Clicked" Style="{StaticResource ButtonStyle}" />
-        </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                <Button Text="Previous" Style="{StaticResource ButtonStyle}" IsEnabled="False"/>
+                <Button Text="Continue" Clicked="Continue_Clicked" Style="{StaticResource ButtonStyle}" />
+            </StackLayout>
         </StackLayout>
 </ContentPage>
 

@@ -14,7 +14,7 @@ public partial class Courses : ContentPage
         Cou_List_View.ItemsSource = Course;
     }
 
-    private CoursesClass selectedCourse;
+    public static CoursesClass selectedCourse;
     private void Cou_List_View_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         selectedCourse = e.Item as CoursesClass;

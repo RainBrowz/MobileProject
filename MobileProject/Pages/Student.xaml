@@ -7,7 +7,7 @@
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="BackgroundColor" Value="#6200EE" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="CornerRadius" Value="10" />
             <Setter Property="Padding" Value="10" />
         </Style>
         <Style x:Key="LabelStyle" TargetType="Label">
@@ -106,18 +106,29 @@
             <Button Text="Delete" CommandParameter="{Binding Id}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
 
             <!-- ListView to display student records -->
-            <ListView x:Name="StudentListView" ItemTapped="Stu_List_View_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{Binding Id}" Style="{StaticResource LabelStyle}"/>
-                                <Label Text="{Binding Name}" Style="{StaticResource LabelStyle}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <StackLayout>
+                <Frame Style="{StaticResource FrameStyle}">
+                    <StackLayout>
+                        <Label Text="Students Entered" Style="{StaticResource LabelStyle}" HorizontalOptions="Center"/>
+
+                        <ScrollView>
+                            <ListView x:Name="StudentListView" ItemTapped="Stu_List_View_ItemTapped">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Id}" Style="{StaticResource LabelStyle}"/>
+                                                <Label Text="{Binding Name}" Style="{StaticResource LabelStyle}"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
                 <Button Text="Previous" Clicked="Previous_Clicked" Style="{StaticResource ButtonStyle}" />
                 <Button Text="Continue" Clicked="Continue_Clicked" Style="{StaticResource ButtonStyle}" />

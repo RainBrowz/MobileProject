@@ -68,6 +68,22 @@ namespace MobileProject.DataTransactions
             conn.Delete(new MajorClass { majId = majorid });
         }
 
+        public List<EnrollmentsClass> GetAllEnrollments()
+        {
+            Init();
+            return conn.Table<EnrollmentsClass>().ToList();
+        }
+        public void AddEnrollments(EnrollmentsClass Enrollments)
+        {
+            conn = new SQLiteConnection(this.dbPath);
+            conn.Insert(Enrollments);
+        }
+        public void DeleteEnrollments(int enrolid)
+        {
+            conn = new SQLiteConnection(this.dbPath);
+            conn.Delete(new EnrollmentsClass { EnrId = enrolid });
+        }
+
 
     }
 }

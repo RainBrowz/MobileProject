@@ -4,7 +4,39 @@
              x:Class="MobileProject.Enrollments"
              Title="Enrollments">
 
-<VerticalStackLayout>
+    <ContentPage.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#6200EE" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+    </ContentPage.Resources>
 
-</VerticalStackLayout>
+    <StackLayout>
+
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+            <Label Text="Enroll Student" FontSize="Title" HorizontalTextAlignment="Center" />
+
+            <!-- Student Picker -->
+            <Picker x:Name="StudentPicker" Title="Select Student" SelectedIndexChanged="StudentPicker_SelectedIndexChanged"/>
+
+            <!-- Course Picker -->
+            <Picker x:Name="CoursePicker" Title="Select Course" SelectedIndexChanged="CoursePicker_SelectedIndexChanged"/>
+
+            <!-- Enroll Button -->
+            <Button Text="Enroll" Clicked="Button_Add_Clicked" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+
+            <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+            <Button Text="Previous" Clicked="Previous_Clicked" Style="{StaticResource ButtonStyle}"/>
+            <Button Text="Continue" Style="{StaticResource ButtonStyle}" IsEnabled="False"/>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

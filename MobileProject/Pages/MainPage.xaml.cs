@@ -67,7 +67,7 @@ namespace MobileProject
             await Shell.Current.GoToAsync("//Student");
         }
 
-        private MajorClass selectedMajor;
+        public static MajorClass selectedMajor;
         private void major_List_View_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             selectedMajor = e.Item as MajorClass;
