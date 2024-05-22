@@ -29,7 +29,7 @@ public partial class Student : ContentPage
                !string.IsNullOrWhiteSpace(PhoneNumberEntry.Text) &&
                !string.IsNullOrWhiteSpace(EmailEntry.Text) &&
                !string.IsNullOrWhiteSpace(AddressEntry.Text) &&
-               (MaleRadioButton.IsChecked || FemaleRadioButton.IsChecked) &&
+
                DateOfBirthPicker.Date != DateTime.Today;
     }
     private void Button_Add_Clicked(object sender, EventArgs e)
@@ -53,8 +53,6 @@ public partial class Student : ContentPage
         EmailEntry.Text = string.Empty;
         AddressEntry.Text = string.Empty;
 
-        MaleRadioButton.IsChecked = false;
-        FemaleRadioButton.IsChecked = false;
 
         DateOfBirthPicker.Date = DateTime.Today;
     }
@@ -104,4 +102,16 @@ public partial class Student : ContentPage
             entry.Text = newText;
         }
     }
+
+    private async void Previous_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//MainPage");
+    }
+
+    private async void Continue_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//Courses");
+    }
+
+
 }

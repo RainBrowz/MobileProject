@@ -3,6 +3,73 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileProject.MainPage"
              Title="HomePage">
+    <ContentPage.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#6200EE" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="LightGray" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        <Style x:Key="FrameStyle" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+        </ContentPage.Resources>
 
-   
+
+
+
+
+        <StackLayout Padding="20" Spacing="20">
+            <Label Text="Choose your Major" Style="{StaticResource LabelStyle}" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
+            <Picker x:Name="MajorPicker" Title="Major" WidthRequest="300">
+                    <Picker.Items>
+                        <x:String>Software Engineering</x:String>
+                        <x:String>Computer Engineering</x:String>
+                        <x:String>Biomedical Engineering</x:String>
+                        <x:String>Chemical Engineering</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+            <Button x:Name="AddButton" Text="Add" Clicked="Button_Add_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+            <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+        </StackLayout>
+        <Button Text="Delete" CommandParameter="{Binding majId}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+        <StackLayout>
+                <Frame Style="{StaticResource FrameStyle}">
+                    <Label Text="Major Selected" Style="{StaticResource LabelStyle}" HorizontalOptions="Center"/>
+                </Frame>
+            </StackLayout>
+
+        <ScrollView>
+            <ListView x:Name="major_List_View" ItemTapped="major_List_View_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding majId}" Style="{StaticResource LabelStyle}"/>
+                                <Label Text="{Binding majName}" Style="{StaticResource LabelStyle}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+            <Button Text="Previous" Style="{StaticResource ButtonStyle}" IsEnabled="False"/>
+            <Button Text="Continue" Clicked="Continue_Clicked" Style="{StaticResource ButtonStyle}" />
+        </StackLayout>
+        </StackLayout>
 </ContentPage>
+

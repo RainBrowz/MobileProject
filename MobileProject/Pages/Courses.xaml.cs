@@ -64,5 +64,14 @@ public partial class Courses : ContentPage
             Course.Add(course);
         }
     }
+    private async void Previous_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//Student");
+    }
+
+    private async void Continue_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//Enrollments");
+    }
 }
 

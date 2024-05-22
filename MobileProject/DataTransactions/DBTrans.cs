@@ -19,6 +19,8 @@ namespace MobileProject.DataTransactions
                     conn = new SQLiteConnection(this.dbPath);
                     conn.CreateTable<StudentClass>();
                     conn.CreateTable<CoursesClass>();
+                    conn.CreateTable<MajorClass>();
+                    conn.CreateTable<EnrollmentsClass>();
         }
         public List<StudentClass> GetAllStudents()
         {
@@ -50,5 +52,22 @@ namespace MobileProject.DataTransactions
             conn = new SQLiteConnection(this.dbPath);
             conn.Delete(new CoursesClass { CouId = course_ID });
         }
+        public List<MajorClass> GetAllMajor()
+        {
+            Init();
+            return conn.Table<MajorClass>().ToList();
+        }
+        public void AddMajor(MajorClass Major)
+        {
+            conn = new SQLiteConnection(this.dbPath);
+            conn.Insert(Major);
+        }
+        public void DeleteMajor(int majorid)
+        {
+            conn = new SQLiteConnection(this.dbPath);
+            conn.Delete(new MajorClass { majId = majorid });
+        }
+
+
     }
 }

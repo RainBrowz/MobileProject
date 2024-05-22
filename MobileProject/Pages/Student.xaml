@@ -3,6 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileProject.Student"
              Title="Student">
+    <ContentPage.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#6200EE" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="LightGray" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        <Style x:Key="FrameStyle" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="FontSize" Value="Micro" />
+            <Setter Property="TextColor" Value="Gray" />
+            <Setter Property="Margin" Value="5, 0" />
+        </Style>
+        <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="#333" />
+            <Setter Property="Margin" Value="10, 0" />
+        </Style>
+    </ContentPage.Resources>
+
+
 
     <!-- ScrollView allows scrolling if content exceeds screen size -->
     <ScrollView>
@@ -10,39 +40,70 @@
         <StackLayout Padding="20" Spacing="15">
 
             <!-- Header for student information section -->
-            <Label Text="Student Information" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" />
+            <Label Text="Student Information"  Style="{StaticResource LabelStyle}" />
 
             <!-- Entry field for student name -->
-            <Entry x:Name="StudentName" Placeholder="Enter Name" Keyboard="Text" TextChanged="NonNumeric" />
-
+            <Frame Style="{StaticResource FrameStyle}" >
+                <Entry x:Name="StudentName" Placeholder="Enter Name" Keyboard="Text" TextChanged="NonNumeric" />
+            </Frame>
             <!-- Gender selection section -->
-            <Label Text="Gender" FontAttributes="Bold"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <RadioButton x:Name="MaleRadioButton" Content="Male" GroupName="Gender" VerticalOptions="Center"/>
-                <RadioButton x:Name="FemaleRadioButton" Content="Female" GroupName="Gender" VerticalOptions="Center"/>
+            <StackLayout Padding="20" Spacing="15">
+
+                <Label Text="Gender" Style="{StaticResource LabelStyle}"/>
+
+                <StackLayout RadioButtonGroup.GroupName="Gender" Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+
+                    <Frame CornerRadius="10" Padding="5" BorderColor="{StaticResource PrimaryColor}" HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="Center">
+                        <RadioButton Value="Female" Style="{StaticResource RadioButtonStyle}">
+                            <RadioButton.Content>
+                                <StackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image Source="female.png" WidthRequest="100" HeightRequest="100" />
+                                    <Label Text="Female" HorizontalOptions="Center" Style="{StaticResource LabelStyle}" FontSize="Small"/>
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </Frame>
+
+                    <Frame CornerRadius="10" Padding="5" BorderColor="{StaticResource PrimaryColor}" HasShadow="True" BackgroundColor="Transparent" HorizontalOptions="Center">
+                        <RadioButton Value="Male" Style="{StaticResource RadioButtonStyle}">
+                            <RadioButton.Content>
+                                <StackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image Source="male.png" WidthRequest="100" HeightRequest="100" />
+                                    <Label Text="Male" HorizontalOptions="Center" Style="{StaticResource LabelStyle}" FontSize="Small"/>
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </Frame>
+
+                </StackLayout>
             </StackLayout>
 
+
             <!-- Date of Birth selection -->
-            <Label Text="Date of Birth" FontAttributes="Bold"/>
-            <DatePicker x:Name="DateOfBirthPicker" WidthRequest="250" HorizontalOptions="Center"/>
+            <Label Text="Date of Birth"  Style="{StaticResource LabelStyle}"/>
+            <DatePicker x:Name="DateOfBirthPicker" WidthRequest="250"  Style="{StaticResource DatePickerStyle}"/>
 
             <!-- Entry field for phone number -->
-            <Entry x:Name="PhoneNumberEntry" Placeholder="Phone Number" Keyboard="Telephone" TextChanged="Numeric" />
-
+            <Frame Style="{StaticResource FrameStyle}" >
+                <Entry x:Name="PhoneNumberEntry" Placeholder="Phone Number" Keyboard="Telephone" TextChanged="Numeric" />
+            </Frame>
             <!-- Entry field for email -->
-            <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
-
-            <!-- Entry field for home address -->
-            <Entry x:Name="AddressEntry" Placeholder="Home Address" Keyboard="Text"/>
+            <Frame Style="{StaticResource FrameStyle}" >
+                <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
+            </Frame>
+             <!-- Entry field for home address -->
+            <Frame Style="{StaticResource FrameStyle}" >
+                <Entry x:Name="AddressEntry" Placeholder="Home Address" Keyboard="Text"/>
+            </Frame>
 
             <!-- Button layout -->
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-                <Button x:Name="AddButton" Text="Add" Clicked="Button_Add_Clicked" BackgroundColor="#4CAF50" TextColor="White" />
-                <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" />
+                <Button x:Name="AddButton" Text="Add" Clicked="Button_Add_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+                <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}"/>
             </StackLayout>
 
             <!-- Delete button -->
-            <Button Text="Delete" CommandParameter="{Binding Id}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" HorizontalOptions="Center"/>
+            <Button Text="Delete" CommandParameter="{Binding Id}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
 
             <!-- ListView to display student records -->
             <ListView x:Name="StudentListView" ItemTapped="Stu_List_View_ItemTapped">
@@ -50,13 +111,17 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{Binding Id}" VerticalOptions="Center"/>
-                                <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Id}" Style="{StaticResource LabelStyle}"/>
+                                <Label Text="{Binding Name}" Style="{StaticResource LabelStyle}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                <Button Text="Previous" Clicked="Previous_Clicked" Style="{StaticResource ButtonStyle}" />
+                <Button Text="Continue" Clicked="Continue_Clicked" Style="{StaticResource ButtonStyle}" />
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>
