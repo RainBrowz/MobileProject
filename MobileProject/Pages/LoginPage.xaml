@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileProject.Pages.LoginPage"
+             x:Class="MobileProject.LoginPage"
              Title="LoginPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <StackLayout VerticalOptions="Start" Padding="20">
+            <Label Text="👤" HorizontalOptions="Center" HeightRequest="100" FontSize="Header" />
+            <Entry x:Name="UsernameEntry" Placeholder="Username" PlaceholderColor="White"
+                   BackgroundColor="#2980b9" TextColor="White" Margin="0,20,0,0" WidthRequest="200"/>
+            <Entry x:Name="PasswordEntry" Placeholder="Password" PlaceholderColor="White"
+                   BackgroundColor="#2980b9" TextColor="White" IsPassword="True" Margin="0,10,0,0" WidthRequest="200"/>
+            <Button Text="Login" Clicked="OnLoginButtonClicked" BackgroundColor="#2ecc71"
+                    TextColor="White" CornerRadius="5" Margin="0,20,0,0" WidthRequest="200" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

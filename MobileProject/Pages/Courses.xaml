@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileProject.Courses"
              Title="Courses">
-    
+
     <ContentPage.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#6200EE" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Padding" Value="15,10" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
         </Style>
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="LightGray" />
@@ -35,11 +36,18 @@
                 <Entry x:Name="Cou_Name" Placeholder="Enter Course Name" Keyboard="Text"  />
             </Frame>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-                <Button x:Name="AddButton" Text="Add" Clicked="AddButton_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}"/>
-                <Button x:Name="ShowButton" Text="Show" Clicked="ShowButton_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}" />
-            </StackLayout>
-            <Button Text="Delete" CommandParameter="{Binding CouId}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+
+            <Grid HorizontalOptions="FillAndExpand">
+                <!-- Define two columns, each taking up half of the available width -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                    <Button x:Name="AddButton" Text="Add" Clicked="AddButton_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}" Grid.Column="0"/>
+                    <Button x:Name="ShowButton" Text="Show" Clicked="ShowButton_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}" Grid.Column="1"/>
+            </Grid>
+
 
 
 
@@ -52,15 +60,23 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding CouId}" Style="{StaticResource LabelStyle}"/>
-                                            <Label Text="{Binding CourseName}" Style="{StaticResource LabelStyle}"/>
-                                        </StackLayout>
+                                        <Frame Margin="10" Padding="10" CornerRadius="10" HasShadow="True" >
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                                                <Frame Padding="5" CornerRadius="5" BorderColor="Transparent">
+                                                     <Label Text="{Binding CouId}" Style="{StaticResource LabelStyle}"/>
+                                                </Frame>
+                                                <Label Text="-" FontSize="Large" LineBreakMode="HeadTruncation" VerticalOptions="Center"/>
+                                                <Frame Padding="5" CornerRadius="5" BorderColor="Transparent">
+                                                     <Label Text="{Binding CourseName}" Style="{StaticResource LabelStyle}"/>
+                                                </Frame>
+                                            </StackLayout>
+                                        </Frame>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </ScrollView>
+                    <Button Text="Delete" CommandParameter="{Binding CouId}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
                 </StackLayout>
             </Frame>
 

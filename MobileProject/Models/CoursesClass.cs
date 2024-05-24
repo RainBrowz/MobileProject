@@ -12,5 +12,10 @@ namespace MobileProject.Models
         [PrimaryKey, AutoIncrement]
         public int CouId { get; set; }
         public string CourseName { get; set; }
+
+        public override string ToString()
+        {
+            return CourseName;
+        }
     }
 }

@@ -5,10 +5,11 @@
              Title="HomePage">
     <ContentPage.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#6200EE" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Padding" Value="15,10" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
         </Style>
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="LightGray" />
@@ -25,12 +26,12 @@
 
 
 
-
+    <ScrollView>
         <StackLayout Padding="20" Spacing="20">
             <Label Text="Choose your Major" Style="{StaticResource LabelStyle}" />
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
-            <Picker x:Name="MajorPicker" Title="Major" WidthRequest="300">
+                <Picker x:Name="MajorPicker" Title="Major" WidthRequest="300">
                     <Picker.Items>
                         <x:String>Software Engineering</x:String>
                         <x:String>Computer Engineering</x:String>
@@ -40,11 +41,11 @@
                 </Picker>
             </StackLayout>
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-            <Button x:Name="AddButton" Text="Add" Clicked="Button_Add_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}"/>
-            <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}"/>
-        </StackLayout>
-        <Button Text="Delete" CommandParameter="{Binding majId}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                <Button x:Name="AddButton" Text="Add" Clicked="Button_Add_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+                <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+            </StackLayout>
+
 
             <StackLayout>
                 <Frame Style="{StaticResource FrameStyle}">
@@ -56,15 +57,23 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="{Binding majId}" Style="{StaticResource LabelStyle}"/>
-                                                <Label Text="{Binding majName}" Style="{StaticResource LabelStyle}"/>
-                                            </StackLayout>
+                                            <Frame Margin="10" Padding="10" CornerRadius="10" HasShadow="True" >
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                                                    <Frame Padding="5" CornerRadius="5" BorderColor="Transparent">
+                                                        <Label Text="{Binding majId}" Style="{StaticResource LabelStyle}"/>
+                                                    </Frame>
+                                                    <Label Text="-" FontSize="Large" VerticalOptions="Center"/>
+                                                    <Frame Padding="5" CornerRadius="5" BorderColor="Transparent">
+                                                        <Label Text="{Binding majName}" Style="{StaticResource LabelStyle}"/>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </Frame>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </ScrollView>
+                        <Button Text="Delete" CommandParameter="{Binding majId}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
@@ -75,5 +84,6 @@
                 <Button Text="Continue" Clicked="Continue_Clicked" Style="{StaticResource ButtonStyle}" />
             </StackLayout>
         </StackLayout>
+    </ScrollView>
 </ContentPage>
 

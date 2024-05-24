@@ -32,12 +32,12 @@ public partial class Student : ContentPage
 
                DateOfBirthPicker.Date != DateTime.Today;
     }
-    private void Button_Add_Clicked(object sender, EventArgs e)
+    private async void Button_Add_Clicked(object sender, EventArgs e)
     {
         // Check if all required fields are filled
         if (!AreAllFieldsFilled())
         {
-            DisplayAlert("Error", "Please fill in all required fields.", "OK");
+            await DisplayAlert("Error", "Please fill in all required fields.", "OK");
             return;
         }
         // Create a new student object

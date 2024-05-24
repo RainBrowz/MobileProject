@@ -8,6 +8,13 @@
 
 
     <TabBar>
+
+        <Tab Title="LoginPage"  >
+
+            <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="LoginPage"  />
+
+        </Tab>
+
         <Tab Title="Major"  >
 
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"  />
@@ -31,6 +38,14 @@
             <ShellContent ContentTemplate="{DataTemplate local:Enrollments}" Route="Enrollments"/>
 
         </Tab>
+
+        <Tab Title="MidPage"  >
+
+            <ShellContent ContentTemplate="{DataTemplate local:MidPage}" Route="MidPage"/>
+
+        </Tab>
+
+
     </TabBar>
 
 </Shell>

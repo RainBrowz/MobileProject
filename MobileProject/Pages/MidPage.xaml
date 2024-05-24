@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileProject.MidPage"
+             Title="MidPage">
+
+    <ScrollView>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ProfilePicture is made as text to be seen by different users -->
+            <Label Text="👤" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" FontSize="Header"/>
+
+            <StackLayout Grid.Row="1" Spacing="10" BackgroundColor="Gray" Padding="25" HorizontalOptions="FillAndExpand" Orientation="Vertical" VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                    <Label Text="Name" WidthRequest="100"/>
+                    <Entry x:Name="NameEntry" WidthRequest="200" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                    <Label Text="Last Name" WidthRequest="100"/>
+                    <Entry x:Name="LastNameEntry" WidthRequest="200"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                    <Label Text="Tel. No." WidthRequest="100"/>
+                    <Entry x:Name="TelNoEntry" WidthRequest="200"/>
+                </StackLayout>
+
+                <!-- Gender Selection -->
+                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                    <Label Text="Gender" WidthRequest="100"/>
+                    <RadioButton x:Name="MaleRadioButton" Content="Male" GroupName="GenderGroup"/>
+                    <RadioButton x:Name="FemaleRadioButton" Content="Female" GroupName="GenderGroup"/>
+                </StackLayout>
+
+                <!-- Interests to Cover -->
+                <Label Text="Interest to Cover" HorizontalOptions="Center" FontSize="Subtitle"/>
+                <Grid ColumnSpacing="10" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox x:Name="Interest1" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="🏠" Grid.Row="0" Grid.Column="1" FontSize="Large"/>
+                    <CheckBox x:Name="Interest2" Grid.Row="1" Grid.Column="0"/>
+                    <Label Text="🏢" Grid.Row="1" Grid.Column="1" FontSize="Large"/>
+                    <CheckBox x:Name="Interest3" Grid.Row="0" Grid.Column="2"/>
+                    <Label Text="🎨" Grid.Row="0" Grid.Column="3" FontSize="Large"/>
+                    <CheckBox x:Name="Interest4" Grid.Row="1" Grid.Column="2"/>
+                    <Label Text="⚽" Grid.Row="1" Grid.Column="3" FontSize="Large"/>
+                </Grid>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="2" VerticalOptions="End" Spacing="10" BackgroundColor="Gray">
+
+                <Frame BackgroundColor="Blue" HeightRequest="100" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Grid.Row="2" >
+                    <Button Text="ADD" BackgroundColor="LightGrey" TextColor="White" Clicked="OnAddButtonClicked" WidthRequest="200" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="20"/>
+                </Frame>
+
+                <Label x:Name="DisplayLabel" Text="Click Show To see Your List" HorizontalOptions="Center"/>
+                <Frame BackgroundColor="Blue" HeightRequest="100" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <Button Text="SHOW" BackgroundColor="LightGrey" TextColor="White" WidthRequest="200" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="20" Clicked="OnShowButtonClicked"/>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -32,10 +32,10 @@ namespace MobileProject.DataTransactions
             conn = new SQLiteConnection(this.dbPath);
             conn.Insert(student);
         }
-        public void DeleteStudent(int student_ID)
+        public void DeleteStudent(int DeleteStudent)
         {
             conn = new SQLiteConnection(this.dbPath);
-            conn.Delete(new StudentClass { Id = student_ID });
+            conn.Delete(new StudentClass { Id = DeleteStudent });
         }
         public List<CoursesClass> GetAllCourses()
         {
@@ -47,10 +47,10 @@ namespace MobileProject.DataTransactions
                 conn = new SQLiteConnection(this.dbPath);
                 conn.Insert(course);
         }
-        public void DeleteCourse(int course_ID)
+        public void DeleteCourse(int DeleteCourse)
         {
             conn = new SQLiteConnection(this.dbPath);
-            conn.Delete(new CoursesClass { CouId = course_ID });
+            conn.Delete(new CoursesClass { CouId = DeleteCourse });
         }
         public List<MajorClass> GetAllMajor()
         {
@@ -62,10 +62,10 @@ namespace MobileProject.DataTransactions
             conn = new SQLiteConnection(this.dbPath);
             conn.Insert(Major);
         }
-        public void DeleteMajor(int majorid)
+        public void DeleteMajor(int DeleteMajor)
         {
             conn = new SQLiteConnection(this.dbPath);
-            conn.Delete(new MajorClass { majId = majorid });
+            conn.Delete(new MajorClass { majId = DeleteMajor });
         }
 
         public List<EnrollmentsClass> GetAllEnrollments()
@@ -78,10 +78,10 @@ namespace MobileProject.DataTransactions
             conn = new SQLiteConnection(this.dbPath);
             conn.Insert(Enrollments);
         }
-        public void DeleteEnrollments(int enrolid)
+        public void DeleteEnrollments(int DeleteEnroll)
         {
             conn = new SQLiteConnection(this.dbPath);
-            conn.Delete(new EnrollmentsClass { EnrId = enrolid });
+            conn.Delete(new EnrollmentsClass { EnrId = DeleteEnroll });
         }
 
 

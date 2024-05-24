@@ -5,20 +5,16 @@
              Title="Student">
     <ContentPage.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#6200EE" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Padding" Value="15,10" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
         </Style>
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="LightGray" />
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="HorizontalOptions" Value="Center" />
-        </Style>
-        <Style x:Key="FrameStyle" TargetType="Frame">
-            <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="Padding" Value="10" />
-            <Setter Property="Margin" Value="10" />
         </Style>
         <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
             <Setter Property="FontSize" Value="Micro" />
@@ -43,7 +39,7 @@
             <Label Text="Student Information"  Style="{StaticResource LabelStyle}" />
 
             <!-- Entry field for student name -->
-            <Frame Style="{StaticResource FrameStyle}" >
+            <Frame  >
                 <Entry x:Name="StudentName" Placeholder="Enter Name" Keyboard="Text" TextChanged="NonNumeric" />
             </Frame>
             <!-- Gender selection section -->
@@ -57,7 +53,7 @@
                         <RadioButton Value="Female" Style="{StaticResource RadioButtonStyle}">
                             <RadioButton.Content>
                                 <StackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Image Source="female.png" WidthRequest="100" HeightRequest="100" />
+                                    <Label Text="♀️" FontSize="Header" VerticalOptions="Center" HorizontalOptions="Center"/>
                                     <Label Text="Female" HorizontalOptions="Center" Style="{StaticResource LabelStyle}" FontSize="Small"/>
                                 </StackLayout>
                             </RadioButton.Content>
@@ -68,7 +64,7 @@
                         <RadioButton Value="Male" Style="{StaticResource RadioButtonStyle}">
                             <RadioButton.Content>
                                 <StackLayout Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Image Source="male.png" WidthRequest="100" HeightRequest="100" />
+                                    <Label Text="♂️" FontSize="Header" VerticalOptions="Center" HorizontalOptions="Center"/>
                                     <Label Text="Male" HorizontalOptions="Center" Style="{StaticResource LabelStyle}" FontSize="Small"/>
                                 </StackLayout>
                             </RadioButton.Content>
@@ -84,30 +80,37 @@
             <DatePicker x:Name="DateOfBirthPicker" WidthRequest="250"  Style="{StaticResource DatePickerStyle}"/>
 
             <!-- Entry field for phone number -->
-            <Frame Style="{StaticResource FrameStyle}" >
+            <Frame  >
                 <Entry x:Name="PhoneNumberEntry" Placeholder="Phone Number" Keyboard="Telephone" TextChanged="Numeric" />
             </Frame>
             <!-- Entry field for email -->
-            <Frame Style="{StaticResource FrameStyle}" >
+            <Frame  >
                 <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
             </Frame>
              <!-- Entry field for home address -->
-            <Frame Style="{StaticResource FrameStyle}" >
+            <Frame >
                 <Entry x:Name="AddressEntry" Placeholder="Home Address" Keyboard="Text"/>
             </Frame>
 
             <!-- Button layout -->
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-                <Button x:Name="AddButton" Text="Add" Clicked="Button_Add_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}"/>
-                <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}"/>
-            </StackLayout>
+            <StackLayout Orientation="Vertical" Spacing="20">
 
-            <!-- Delete button -->
-            <Button Text="Delete" CommandParameter="{Binding Id}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <!-- Define two columns, each taking up half of the available width -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <!-- Add the buttons and assign them to the respective columns -->
+                        <Button x:Name="AddButton" Text="Add" Clicked="Button_Add_Clicked" BackgroundColor="#4CAF50" TextColor="White" Style="{StaticResource ButtonStyle}" Grid.Column="0"/>
+                        <Button x:Name="ShowButton" Text="Show" Clicked="Button_Show_Clicked" BackgroundColor="#FFC107" TextColor="White" Style="{StaticResource ButtonStyle}" Grid.Column="1"/>
+                    </Grid>
+
+            </StackLayout>
 
             <!-- ListView to display student records -->
             <StackLayout>
-                <Frame Style="{StaticResource FrameStyle}">
+                <Frame >
                     <StackLayout>
                         <Label Text="Students Entered" Style="{StaticResource LabelStyle}" HorizontalOptions="Center"/>
 
@@ -116,20 +119,29 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="{Binding Id}" Style="{StaticResource LabelStyle}"/>
-                                                <Label Text="{Binding Name}" Style="{StaticResource LabelStyle}"/>
-                                            </StackLayout>
+                                            <Frame Margin="10" Padding="10" CornerRadius="10" HasShadow="True" >
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                                                    <Frame Padding="5" CornerRadius="5" BorderColor="Transparent">
+                                                        <Label Text="{Binding Id}" Style="{StaticResource LabelStyle}"/>
+                                                    </Frame>
+                                                    <Label Text="-" FontSize="Large" VerticalOptions="Center"/>
+                                                    <Frame Padding="5" CornerRadius="5" BorderColor="Transparent">
+                                                        <Label Text="{Binding Name}" Style="{StaticResource LabelStyle}"/>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </Frame>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </ScrollView>
+                        <!-- Delete button -->
+                        <Button Text="Delete" CommandParameter="{Binding Id}" Clicked="Del_Button_Clicked" BackgroundColor="#F44336" TextColor="White" Style="{StaticResource ButtonStyle}"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20">
                 <Button Text="Previous" Clicked="Previous_Clicked" Style="{StaticResource ButtonStyle}" />
                 <Button Text="Continue" Clicked="Continue_Clicked" Style="{StaticResource ButtonStyle}" />
             </StackLayout>
